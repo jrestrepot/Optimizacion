@@ -81,42 +81,8 @@ for e in (nestudiantes):
     for i in range(20):
       model.Add(sum(A.iloc[(e,c)]*x[(c,s,d,j)]<=1 for c in range(ncursos) for s in range(nsalones) for j in range(i,i+5)))
 
-'''
-# before solving the problem I add a solution printer (this code is taken directly from Google's documentation)
-class SolutionPrinterClass(cp_model.CpSolverSolutionCallback):
-    def __init__(self, cursos, salones, dias, i, sols):
-        val = cp_model.CpSolverSolutionCallback.__init__(self)
-        self._cursos = cursos
-        self._workers = workers
-        self._days = days
-        self._shifts = shifts
-        self._solutions = set(sols)
-        self._solution_count = 0
-    def on_solution_callback(self):
-        if self._solution_count in self._solutions:
-            print("solution " + str(self._solution_count))
-            for y in range(self._days):
-                print("day " + str(y))
-                for x in range(self._workers):
-                    is_working = False
-                    for z in range(self._shifts):
-                        if self.Value(self._shiftoptions[(x,y,z)]):
-                            is_working = True
-                            print("worker " +str(x) +" works day " + str(y) +" shift " + str(z))
-                    if not is_working:
-                        print('  Worker {} does not work'.format(x))
-            print()
-        self._solution_count += 1
-    def solution_count(self):
-        return self._solution_count
-'''
 #Resolver el modelo
 solver = cp_model.CpSolver()
 solver.parameters.linearization_level = 0
 #Checkear que el modelo sea factible
 solutionrange = range(1)
-'''
-solution_printer = SolutionPrinterClass(shiftoptions, workers,
-                                        days, shifts, solutionrange)
-solver.SearchForAllSolutions(model, solution_printer)
-'''
