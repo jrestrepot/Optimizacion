@@ -79,7 +79,7 @@ for s in range(nsalones):
 for e in (nestudiantes):
   for d in range(nDias):
     for i in range(20):
-      model.Add(sum(A.iloc[(e,c)]*x[(c,s,d,j)]<=1 for c in range(ncursos) for s in range(nsalones) for j in range(i,i+5)))
+      model.Add(sum(A.iloc[(e,c)]*x[(c,s,d,j)] for c in range(ncursos) for s in range(nsalones) for j in range(i,i+5)) <= 1)
 
 #Resolver el modelo
 solver = cp_model.CpSolver()
