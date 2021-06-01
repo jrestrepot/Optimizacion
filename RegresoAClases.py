@@ -86,3 +86,4 @@ solver = cp_model.CpSolver()
 solver.parameters.linearization_level = 0
 #Checkear que el modelo sea factible
 solutionrange = range(1)
+status = solver.Solve(model)
