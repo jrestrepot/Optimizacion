@@ -74,7 +74,7 @@ for c in range(ncursos):
 for s in range(nsalones):
   for h in range(len(D.columns)):
     d,i = transfor(h+1)
-    model.Add(sum(x[(c,s,d,i)] for c in range(ncursos)) <= D.iloc[s,h]) #Tenemos el mismo problema de arriba de sintaxis
+    model.Add(sum(x[(c,s,d,i)] for c in range(ncursos)) <= D.iloc[s,h])
 
 for e in range(nestudiantes):
   for d in range(nDias):
@@ -87,4 +87,4 @@ solver.parameters.linearization_level = 0
 #Checkear que el modelo sea factible
 solutionrange = range(1)
 status = solver.Solve(model)
-status = cp_model.OPTIMAL
+print(status == cp_model.OPTIMAL)
