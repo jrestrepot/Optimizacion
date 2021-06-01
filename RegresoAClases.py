@@ -76,7 +76,7 @@ for s in range(nsalones):
     d,i = transfor(h+1)
     model.Add(sum(x[(c,s,d,i)] for c in range(ncursos)) <= D.iloc[s,h]) #Tenemos el mismo problema de arriba de sintaxis
 
-for e in (nestudiantes):
+for e in range(nestudiantes):
   for d in range(nDias):
     for i in range(20):
       model.Add(sum(A.iloc[(e,c)]*x[(c,s,d,j)] for c in range(ncursos) for s in range(nsalones) for j in range(i,i+5)) <= 1)
